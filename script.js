@@ -2,6 +2,8 @@
 
 window.addEventListener("load", ()=> {
     const form = document.querySelector("form");
+    let list = document.getElementById('faultyItems');
+    list.style.visibility = 'hidden'; // double check this with Carrie's recording about hidden visibility
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
         //List DOM
@@ -9,7 +11,7 @@ window.addEventListener("load", ()=> {
         let copilot = document.querySelector("input[name=copilotName]").value;
         let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
         let cargoLevel = document.querySelector("input[name=cargoMass]").value;
-        let list = document.getElementById('faultyItems');
+        
 
         //use formsubmission to validate and update list
         formSubmission(document,list,pilot,copilot,fuelLevel,cargoLevel);

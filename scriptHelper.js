@@ -44,7 +44,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    validateInput(fuelLevel) === `Empty`||validateInput(cargoLevel) === `Empty`) {
        alert(`All fields are required`); // Empty is a local variable defined in previous function (Don't mix up concepts with variables)
    }
-   // fuelLevel and cargoLevel are numbers +++ pilot and co-pilot are strings
+   // fuelLevel and cargoLevel are numbers +++ co/pilot are strings
    else if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
        alert(`Please enter numerical values for Fuel Level and Cargo Mass`);
    } else if (validateInput(pilot)===`Is a Number`||validateInput(copilot)===`Is a Number`) {
@@ -62,21 +62,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
        fuelStatus.innerHTML = `Not enough fuel for journey`;
        list.style.visibility = 'visible';
        launchStatus.innerHTML = `Shuttle not ready for launch`;
-       launchStatus.style.color = `red`;
+       launchStatus.style.color = 'red';
    } else if (Number(cargoLevel) > 10000) {
        cargoStatus.innerHTML = `Cargo too heavy for takeoff`;
        list.style.visibility = `visible`;
        launchStatus.innerHTML = `Shuttle not ready for launch`;
-       launchStatus.style.color = `red`;
+       launchStatus.style.color = 'red';
    } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) > 10000) {
        list.style.visibility = `visible`;
        fuelStatus.innerHTML = `Enough fuel for journey`;
        cargoStatus.innerHTML = `Cargo light enough for takeoff`;
        launchStatus.innerHTML = `Shuttle ready for launch`;
-       launchStatus.style.color = `green`;
+       launchStatus.style.color = 'green';
    }
 }
-
+}
 async function myFetch() {
     let planetsReturned;
 
