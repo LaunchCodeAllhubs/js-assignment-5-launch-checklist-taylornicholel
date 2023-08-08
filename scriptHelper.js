@@ -3,7 +3,8 @@ require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
-   /*
+   let missionTarget = document.getElementById('missionTarget');
+        missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: </li>
@@ -12,12 +13,18 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth: </li>
                     <li>Number of Moons: </li>
                 </ol>
-                <img src="">
-   */
+                <img src="${imageUrl}">
+        `
 }
 
 function validateInput(testInput) {
-   
+    if (testInput === "" || testInput === null || testInput === 0) {
+        return `Empty`
+    } else if ((!isNaN(Number(testInput)))) {
+        return `Is a Number`
+    } else {
+        return 'Not a Number'
+    }
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
