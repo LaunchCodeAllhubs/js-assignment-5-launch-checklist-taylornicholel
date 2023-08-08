@@ -23,7 +23,7 @@ function validateInput(testInput) {
     if (testInput === "" || testInput === null || testInput === 0) {
         return `Empty` // Would 0000 return an invalid submission? or 0.0?
     } else if ((!isNaN(Number(testInput)))) {
-        return `Is a Number`// used to check co/pilot entries
+        return `Is a Number`// used to check co/pilot entries // need a false statement that prompts the next condition
     } else {
         return 'Not a Number' // used to check fuel and cargo entries
     }
@@ -42,10 +42,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    // all fields have an entry
    if (validateInput(pilot) === `Empty`|| validateInput(copilot) === `Empty`|| 
    validateInput(fuelLevel) === `Empty`||validateInput(cargoLevel) === `Empty`) {
-       alert(`All fields are required`); // Empty is a local variable defined in previous function (Don't mix up concepts with variables)
-   }
-   // fuelLevel and cargoLevel are numbers +++ co/pilot are strings
-   else if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
+       alert(`All fields are required`); 
+       // Empty is a local variable defined in previous function (Don't mix up concepts with variables)
+   } else if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
+       // fuelLevel and cargoLevel are numbers +++ co/pilot are strings
        alert(`Please enter numerical values for Fuel Level and Cargo Mass`);
    } else if (validateInput(pilot)===`Is a Number`||validateInput(copilot)===`Is a Number`) {
        alert('Please do not enter numbers for name of pilot or co-pilot');
