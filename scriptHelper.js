@@ -58,25 +58,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 
    //check fuel levels and update faulty items
-   if (Number(fuelLevel) < 10000) {
-       fuelStatus.innerHTML = `Not enough fuel for journey`;
+   if (Number(fuelLevel) < 10000) {       
        list.style.visibility = 'visible';
+       fuelStatus.innerHTML = `Not enough fuel for journey`;
        launchStatus.innerHTML = `Shuttle not ready for launch`;
        launchStatus.style.color = 'red';
    } else if (Number(cargoLevel) > 10000) {
+       list.style.visibility = 'visible';
        cargoStatus.innerHTML = `Cargo too heavy for takeoff`;
-       list.style.visibility = `visible`;
        launchStatus.innerHTML = `Shuttle not ready for launch`;
        launchStatus.style.color = 'red';
    } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) > 10000) {
-       list.style.visibility = `visible`;
+       list.style.visibility = 'visible';
        fuelStatus.innerHTML = `Enough fuel for journey`;
        cargoStatus.innerHTML = `Cargo light enough for takeoff`;
        launchStatus.innerHTML = `Shuttle ready for launch`;
        launchStatus.style.color = 'green';
    }
 }
-}
+
+
+
 async function myFetch() {
     let planetsReturned;
 
