@@ -51,8 +51,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
        alert('Please do not enter numbers for name of pilot or co-pilot');
    } else { 
        // update co/pilot status
-       pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
-       copilotStatus.innerHTML = `Co-pilot ${copilot} is ready`;
+       pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+       copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
        list.style.visibility = 'hidden'; // double check this with Carrie's recording about hidden visibility
    }
 
@@ -61,18 +61,18 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    if (Number(fuelLevel) < 10000) {       
        list.style.visibility = 'visible';
        fuelStatus.innerHTML = `Not enough fuel for journey`;
-       launchStatus.innerHTML = `Shuttle not ready for launch`;
+       launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
        launchStatus.style.color = 'red';
    } else if (Number(cargoLevel) > 10000) {
        list.style.visibility = 'visible';
-       cargoStatus.innerHTML = `Cargo too heavy for takeoff`;
-       launchStatus.innerHTML = `Shuttle not ready for launch`;
+       cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+       launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
        launchStatus.style.color = 'red';
    } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) > 10000) {
        list.style.visibility = 'visible';
        fuelStatus.innerHTML = `Enough fuel for journey`;
        cargoStatus.innerHTML = `Cargo light enough for takeoff`;
-       launchStatus.innerHTML = `Shuttle ready for launch`;
+       launchStatus.innerHTML = `Shuttle is Ready for Launch`;
        launchStatus.style.color = 'green';
    }
 }
