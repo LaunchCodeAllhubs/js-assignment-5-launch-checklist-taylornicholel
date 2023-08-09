@@ -22,6 +22,7 @@ function validateInput(testInput) {
     // testing numeric data to ensure countablility 
     if (testInput === "" || testInput === null || testInput === 0) {
         return `Empty` // Would 0000 return an invalid submission? or 0.0?
+        // because the DOM spec grades with 0 value for LC, would it be better to remove it here?
     } else if ((!isNaN(Number(testInput)))) {
         return `Is a Number`// used to check co/pilot entries // need a false statement that prompts the next condition
     } else {
@@ -47,35 +48,37 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    } else if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
        // fuelLevel and cargoLevel are numbers +++ co/pilot are strings
        alert(`Please enter numerical values for Fuel Level and Cargo Mass`);
-   } else if (validateInput(pilot)===`Is a Number`||validateInput(copilot)===`Is a Number`) {
+   } else if (validateInput(pilot)===`Is a Number`|| validateInput(copilot)===`Is a Number`) {
        alert('Please do not enter numbers for name of pilot or co-pilot');
    } else { 
        // update co/pilot status
        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
        list.style.visibility = 'visible'; // double check this with Carrie's recording about hidden visibility
-   }
+   };
 
 
    //check fuel levels and update faulty items
+   // something in here is messing with my final alert giving false results; how to split so that 
+   // would removing the else in else if recreate the needs?
    if (Number(fuelLevel) < 10000) {       
        list.style.visibility = 'visible';
-       fuelStatus.innerHTML = `Not enough fuel for journey`;
+       fuelStatus.innerHTML = `Fuel level too low for launch`;
        launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
-       launchStatus.style.color = 'rgb(199, 37, 78)';
+       launchStatus.style.color = 'rgb(199, 37, 78)'; // red
    } else if (Number(cargoLevel) > 10000) {
        list.style.visibility = 'visible';
        cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
        launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
-       launchStatus.style.color = 'rgb(199, 37, 78)';
-   } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) > 10000) {
+       launchStatus.style.color = 'rgb(199, 37, 78)'; // red
+   } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) > 10000) { // need the if in else if to get the function to test the true-ness of these statements
        list.style.visibility = 'visible';
        fuelStatus.innerHTML = `Enough fuel for journey`;
        cargoStatus.innerHTML = `Cargo low enough for takeoff`;
        launchStatus.innerHTML = `Shuttle is Ready for Launch`;
-       launchStatus.style.color = 'green';
-   }
-}
+       launchStatus.style.color = 'rgb(65, 159, 106)'; // green
+   };
+};
 
 
 
