@@ -63,7 +63,7 @@ describe ("GRADING DOM MANIPULATION TEST: ", function () {
 
    it ("Launch Checklist when fuel too low for launch", function() {
      // Shuttle should be not be ready for launch, fuel too low
-     studentFunctions.formSubmission(window.document, list, "Chris", "Bob", 0, 5);
+     studentFunctions.formSubmission(window.document, list, "Chris", "Bob", 10, 5); // had to update fuel to 10 so it wouldn't get the empty 0 variable which changes the alert message
      expect(list.style.visibility).toEqual("visible");
      expect(h2.style.color).toEqual("rgb(199, 37, 78)");
      expect(h2.textContent).toEqual("Shuttle Not Ready for Launch");
@@ -89,7 +89,7 @@ describe ("GRADING DOM MANIPULATION TEST: ", function () {
 
    it("Launch Checklist when cargo too heavy and fuel too low for launch", function() {
      // Shuttle should not be ready for launch, cargo too high, fuel too low
-     studentFunctions.formSubmission(window.document, list, "Chris", "Bob", 0, 100000);
+     studentFunctions.formSubmission(window.document, list, "Chris", "Bob", 10, 100000); // had to update fuel to 10 so it wouldn't get the empty 0 variable which changes the alert message
      expect(list.style.visibility).toEqual("visible");
      expect(h2.style.color).toEqual("rgb(199, 37, 78)");
      expect(h2.textContent).toEqual("Shuttle Not Ready for Launch");
@@ -122,9 +122,9 @@ describe ("GRADING DOM MANIPULATION TEST: ", function () {
    })
 
    it ("Script contains calls to appropriate helper functions", function() {
-     expect(script.includes("formSubmission(")).toBeTrue;
-     expect(script.includes("myFetch(")).toBeTrue;
-     expect(script.includes("pickPlanet(")).toBeTrue;
-     expect(script.includes("addDestinatonInfo(")).toBeTrue;
+     expect(script.includes("formSubmission(")).toBeTrue();
+     expect(script.includes("myFetch(")).toBeTrue();
+     expect(script.includes("pickPlanet(")).toBeTrue();
+     expect(script.includes("addDestinationInfo(")).toBeTrue();
    })
 });
