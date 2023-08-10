@@ -61,6 +61,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    //check fuel levels and update faulty items
    // something in here is messing with my final alert giving false results; how to split so that 
    // would removing the else in else if recreate the needs?
+   /*
    if (Number(fuelLevel) < 10000) {       
        list.style.visibility = 'visible';
        fuelStatus.innerHTML = `Fuel level too low for launch`;
@@ -77,7 +78,43 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
        cargoStatus.innerHTML = `Cargo low enough for takeoff`;
        launchStatus.innerHTML = `Shuttle is Ready for Launch`;
        launchStatus.style.color = 'rgb(65, 159, 106)'; // green
-   };
+   }; */
+
+    // need the if in else if to get the function to test the true-ness of these statements
+    if (Number(cargoLevel) < 10000 && Number(fuelLevel) >= 10000) { // greater or equal for verification
+        list.style.visibility = 'visible';
+        fuelStatus.innerHTML = `Enough fuel for journey`;
+        cargoStatus.innerHTML = `Cargo mass low enough for launch`;
+        launchStatus.innerHTML = `Shuttle is Ready for Launch`;
+        launchStatus.style.color = 'rgb(65, 159, 106)'; // green
+    };
+
+
+
+    if (Number(fuelLevel) < 10000) {       
+        list.style.visibility = 'visible';
+        fuelStatus.innerHTML = `Fuel level too low for launch`;
+    } else {
+        list.style.visibility = 'visible';
+        fuelStatus.innerHTML = `Fuel level high enough for launch`;
+    };
+
+    if (Number(cargoLevel) > 10000) {
+        list.style.visibility = 'visible';
+        cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+    } else {
+        list.style.visibility = 'visible';
+        cargoStatus.innerHTML = `Cargo mass low enough for launch`;
+    };
+
+    if (Number(cargoLevel) > 10000 || Number(fuelLevel) < 10000) { 
+        list.style.visibility = 'visible';
+        launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
+        launchStatus.style.color = 'rgb(199, 37, 78)'; // red
+    };
+
+    
+
 };
 
 
